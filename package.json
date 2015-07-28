@@ -1,0 +1,22 @@
+{
+  "name": "email-collector",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ssbc/email-collector.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ssbc/email-collector/issues"
+  },
+  "homepage": "https://github.com/ssbc/email-collector#readme",
+  "dependencies": {
+    "level": "^1.2.0"
+  }
+}
