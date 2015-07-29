@@ -9,11 +9,22 @@ http.createServer(function (req, res) {
 
   console.log(ip, req.method)
 
-  if (req.method != 'POST') {
-    res.writeHead(405)
-    return res.end('Only POST is supported')
+  if (req.method == 'OPTIONS') {
+    res.writeHead(200)
+    return res.end()
   }
 
+  // via GET?
+  var qs = require('querystring').parse(require('url').parse(req.url).query)
+  if (qs.email) {
+    db.put(ip, (qs.name||'_') + ' ' + qs.email)
+
+    res.setHeader('Refresh', '7; url=http://ssbc.github.io')
+    res.writeHead(200)
+    return res.end('<p>Got it! You\'ll be emailed about any updates on Patchwork\'s release.</p><p>Redirecting you in 5 seconds...</p>')
+  }
+
+  // via POST?
   var body = ''
   req.on('data', function(chunk) { body += chunk })
   req.on('end', function() {
